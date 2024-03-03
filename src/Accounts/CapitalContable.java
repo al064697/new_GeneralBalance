@@ -1,6 +1,6 @@
 package src.Accounts;
 
-import src.TextFile;
+import src.resources.TextFile;
 
 public class CapitalContable {
     public String total() {

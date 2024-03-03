@@ -1,6 +1,6 @@
 package src.Components;
 
-import src.TextFile;
+import src.resources.TextFile;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

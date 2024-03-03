@@ -1,6 +1,6 @@
 package src;
 
-import src.Accounts.CapitalContable;
+import src.resources.TextFile;
 
 public class GeneralBalance {
     private String nameEntity, initialDate, finalDate, nameCEO, nameAuthor;
@@ -74,7 +74,7 @@ public class GeneralBalance {
         try {
             TextFile textFile = new TextFile("balanceGeneral.txt");
             textFile.updateTextFile(new GeneralBalance().header());
-            String totalCapital = new CapitalContable().total();
+            String totalCapital = new src.Accounts.CapitalContable().total();
             String footer = new GeneralBalance().footer();
 
         } catch (Exception e) {

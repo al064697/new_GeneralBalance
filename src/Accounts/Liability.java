@@ -1,7 +1,7 @@
 package src.Accounts;
 
 import src.Components.Accounts;
-import src.TextFile;
+import src.resources.TextFile;
 
 import java.util.ArrayList;
 
