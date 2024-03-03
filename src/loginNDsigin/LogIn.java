@@ -55,6 +55,13 @@ public class LogIn {
     }
 
     public static void main(String[] args) {
+        // Crear una lista de usuarios
+        ArrayList<User> users = new ArrayList<>();
 
+        // Crear una instancia de LogIn
+        LogIn login = new LogIn(users);
+
+        // Llamar al método login
+        login.login();
     }
 }
