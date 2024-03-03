@@ -1,5 +1,7 @@
 package src.loginNDsigin;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.security.MessageDigest;
@@ -51,6 +53,35 @@ public class LogIn {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public void loadUsers() {
+        File folder = new File("."); // replace with the path to the folder where user files are stored
+        File[] listOfFiles = folder.listFiles();
+
+        for (File file : listOfFiles) {
+            if (file.isFile() && file.getName().endsWith(".txt")) {
+                try {
+                    Scanner scanner = new Scanner(file);
+                    while (scanner.hasNextLine()) {
+                        String line = scanner.nextLine();
+                        String[] parts = line.split(" ");
+                        String username = parts[0];
+                        String password = parts[1];
+                        String name = parts[2];
+                        String email = parts[3];
+                        String phone = parts[4];
+                        String lastName = parts[5];
+                        User user = new User(username, password, name, email, phone, lastName);
+                        users.add(user);
+                    }
+                    scanner.close();
+                } catch (FileNotFoundException e) {
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
