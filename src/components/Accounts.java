@@ -1,7 +1,6 @@
 package src.Components;
 
 import src.resources.TextFile;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
@@ -24,9 +23,9 @@ public class Accounts {
         return accounts;
     }
 
-    public double account(ArrayList<Accounts> accounts, String type, String clasification) {
+    public double account(ArrayList<Accounts> accounts, String type, String clasification, String nameFile) {
             System.out.println(clasification);
-            new TextFile("balanceGeneral.txt").updateTextFile( type + " " + clasification);
+            new TextFile(nameFile).updateTextFile( type + " " + clasification);
 
             double[] values = new double[accounts.size()];
             ArrayList<Accounts> nonEmptyAccounts = new ArrayList<>();
@@ -42,16 +41,16 @@ public class Accounts {
                         nonEmptyAccounts.add(accounts.get(i));
                         total += values[i];
 
-                        new TextFile("balanceGeneral.txt").updateTextFile(nonEmptyAccounts.get(i).getName() + " $" + values[i]);
+                        new TextFile(nameFile).updateTextFile(nonEmptyAccounts.get(i).getName() + " $" + values[i]);
                     }
                 }
                 System.out.println("Total de  " + clasification.toLowerCase() + ": $" + total);
 
-                new TextFile("balanceGeneral.txt").updateTextFile("Total de " + clasification.toLowerCase() + ": $" + total);
+                new TextFile(nameFile).updateTextFile("Total de " + clasification.toLowerCase() + ": $" + total);
 
             } catch (InputMismatchException | NumberFormatException | ArithmeticException | NoSuchFieldError  | IndexOutOfBoundsException e) {
                 System.err.println("Se produjo un error. Intenta de nuevo" + '(' + e.getMessage() + ')');
-                account(accounts, type, clasification);
+                account(accounts, type, clasification, nameFile);
             }
             return total;
     }

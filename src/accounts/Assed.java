@@ -6,7 +6,7 @@ import src.resources.TextFile;
 import java.util.ArrayList;
 
 public class Assed extends Accounts {
-     double current() {
+     double current(String nameFile) {
         ArrayList<Accounts> currentAsset = createAccounts(
                 "Caja",
                 "Banco",
@@ -17,10 +17,10 @@ public class Assed extends Accounts {
                 "Deudores diversos",
                 "Anticipo a proveedores"
         );
-        return account(currentAsset, "Activo", "Circulante");
+        return account(currentAsset, "Activo", "Circulante", nameFile);
     }
 
-    double fixed() {
+    double fixed(String nameFile) {
         ArrayList<Accounts> fixedAsset = createAccounts(
                 "Terrenos",
                 "Edificios",
@@ -31,10 +31,10 @@ public class Assed extends Accounts {
                 "Inversiones permanentes",
                 "Documentos por cobrar a largo plazo"
         );
-        return account(fixedAsset, "Activo", "Fijo");
+        return account(fixedAsset, "Activo", "Fijo", nameFile);
     }
 
-    double deferred() {
+    double deferred(String nameFile) {
         ArrayList<Accounts> deferredAsset = createAccounts(
                 "Gastos de investigación y desarrollo",
                 "Gastos en etapas preoperativas de organización y administración",
@@ -47,13 +47,13 @@ public class Assed extends Accounts {
                 "Rentas pagadas por anticipado ",
                 "Intereses pagados por anticipado"
         );
-        return account(deferredAsset, "Activo", "Diferido");
+        return account(deferredAsset, "Activo", "Diferido", nameFile);
     }
 
-    public double totalAsset() {
-        double total = current() + fixed() + deferred();
+    public double totalAsset(String nameFile) {
+        double total = current(nameFile) + fixed(nameFile) + deferred(nameFile);
         System.out.println("Total de activo: $" + total);
-        new TextFile("balanceGeneral.txt").updateTextFile("Total de activo: $" + total);
+        new TextFile(nameFile).updateTextFile("Total de activo: $" + total);
 
         return total;
     }

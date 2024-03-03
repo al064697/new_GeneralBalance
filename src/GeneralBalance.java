@@ -70,16 +70,23 @@ public class GeneralBalance {
         return "Balance general del " + initialDate + " al " + finalDate + "\n";
     }
 
-    public static void main(String[] args) {
+    private void newGeneralBalance() {
         try {
-            TextFile textFile = new TextFile("balanceGeneral.txt");
+            System.out.println("Ingresa el nombre del nuevo balance general");
+            String nameFile = new java.util.Scanner(System.in).nextLine() + ".txt";
+
+            TextFile textFile = new TextFile(nameFile);
             textFile.updateTextFile(new GeneralBalance().header());
-            String totalCapital = new src.Accounts.CapitalContable().total();
+
+            String totalCapital = new src.Accounts.CapitalContable().total(nameFile);
             String footer = new GeneralBalance().footer();
 
         } catch (Exception e) {
             System.out.println("Se produjo un error: " + e.getMessage());
             e.printStackTrace(System.err);
         }
+    }
+    public static void main(String[] args) {
+        new GeneralBalance().newGeneralBalance();
     }
 }
