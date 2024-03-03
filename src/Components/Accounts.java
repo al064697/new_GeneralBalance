@@ -26,7 +26,7 @@ public class Accounts {
 
     public double account(ArrayList<Accounts> accounts, String type, String clasification) {
             System.out.println(clasification);
-            new TextFile("balanceGeneral.txt").updateTextFile( type + clasification);
+            new TextFile("balanceGeneral.txt").updateTextFile( type + " " + clasification);
 
             double[] values = new double[accounts.size()];
             ArrayList<Accounts> nonEmptyAccounts = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Accounts {
 
                 new TextFile("balanceGeneral.txt").updateTextFile("Total de " + clasification.toLowerCase() + ": $" + total);
 
-            } catch (InputMismatchException | NumberFormatException | ArithmeticException | NoSuchFieldError e) {
+            } catch (InputMismatchException | NumberFormatException | ArithmeticException | NoSuchFieldError  | IndexOutOfBoundsException e) {
                 System.err.println("Se produjo un error. Intenta de nuevo" + '(' + e.getMessage() + ')');
                 account(accounts, type, clasification);
             }

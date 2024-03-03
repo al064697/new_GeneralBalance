@@ -3,24 +3,71 @@ package src;
 import src.Accounts.CapitalContable;
 
 public class GeneralBalance {
+    private String nameEntity, initialDate, finalDate, nameCEO, nameAuthor;
+
     String readEntry(String message) {
         System.out.print(message);
         return new java.util.Scanner(System.in).nextLine();
     }
 
     String header() {
-        String nameEntity = readEntry("Nombre de la entidad: ");
-        String initialDate = readEntry("Fecha inicial: ");
-        String finalDate = readEntry("Fecha final: ");
+        nameEntity = readEntry("Nombre de la entidad: ");
+        initialDate = readEntry("Fecha inicial: ");
+        finalDate = readEntry("Fecha final: ");
 
         return nameEntity + "\nBalance general del " + initialDate + " al " + finalDate + "\n";
     }
 
     String footer() {
-        String CEO = readEntry("Autorizado por: ");
-        String author = readEntry("Elaborado por: ");
+        nameCEO = readEntry("Autorizado por: ");
+        nameAuthor = readEntry("Elaborado por: ");
 
-        return "Autorizado por: " + CEO + "\t" + "Elaborado por: " + author;
+        return "Autorizado por: " + nameCEO +  " (Gerente general)"+ "\t" + '\t'
+                + "Elaborado por: " + nameAuthor + " (Contador general)" ;
+    }
+
+    public String getNameEntity() {
+        return nameEntity;
+    }
+
+    public void setNameEntity(String nameEntity) {
+        this.nameEntity = nameEntity;
+    }
+
+    public String getInitialDate() {
+        return initialDate;
+    }
+
+    public void setInitialDate(String initialDate) {
+        this.initialDate = initialDate;
+    }
+
+    public String getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(String finalDate) {
+        this.finalDate = finalDate;
+    }
+
+    public String getNameCEO() {
+        return nameCEO;
+    }
+
+    public void setNameCEO(String nameCEO) {
+        this.nameCEO = nameCEO;
+    }
+
+    public String getNameAuthor() {
+        return nameAuthor;
+    }
+
+    public void setNameAuthor(String nameAuthor) {
+        this.nameAuthor = nameAuthor;
+    }
+
+    public String getRangeDate() {
+        return "Balance general del " + initialDate + " al " + finalDate + "\n";
     }
 
     public static void main(String[] args) {
@@ -35,5 +82,4 @@ public class GeneralBalance {
             e.printStackTrace(System.err);
         }
     }
-
 }
