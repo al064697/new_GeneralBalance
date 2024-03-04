@@ -15,7 +15,7 @@ public class GeneralBalance {
         initialDate = readEntry("Fecha inicial: ");
         finalDate = readEntry("Fecha final: ");
 
-        return nameEntity + "\nBalance general del " + initialDate + " al " + finalDate + "\n";
+        return nameEntity + "\nBalance general del " + initialDate + " al " + finalDate;
     }
 
     String footer() {
@@ -67,7 +67,7 @@ public class GeneralBalance {
     }
 
     public String getRangeDate() {
-        return "Balance general del " + initialDate + " al " + finalDate + "\n";
+        return "Balance general del " + initialDate + " al " + finalDate;
     }
 
     private void newGeneralBalance() {
@@ -79,7 +79,8 @@ public class GeneralBalance {
             textFile.updateTextFile(new GeneralBalance().header());
 
             String totalCapital = new src.Accounts.CapitalContable().total(nameFile);
-            String footer = new GeneralBalance().footer();
+            //String footer = new GeneralBalance().footer();
+            textFile.updateTextFile(new GeneralBalance().footer());
 
         } catch (Exception e) {
             System.out.println("Se produjo un error: " + e.getMessage());
