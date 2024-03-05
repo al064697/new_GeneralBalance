@@ -1,6 +1,9 @@
 package src.Components;
 
+import src.GeneralBalance;
 import src.resources.TextFile;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
@@ -52,8 +55,15 @@ public class Accounts {
 
         } catch (InputMismatchException | NumberFormatException | ArithmeticException | NoSuchFieldError  | IndexOutOfBoundsException e) {
             System.err.println("Se produjo un error. Intenta de nuevo" + '(' + e.getMessage() + ')');
-            account(accounts, type, clasification, nameFile);
+            restart(nameFile);
         }
         return total;
+    }
+
+    public static void restart(String nameFile) {
+        new File(nameFile).delete();
+        String[] args = new String[0];
+        GeneralBalance.main(args);
+        System.exit(0);
     }
 }

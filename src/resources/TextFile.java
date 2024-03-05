@@ -27,5 +27,20 @@ public class TextFile {
             e.printStackTrace(System.err);
         }
     }
-}
 
+    void deleteTextFile() {
+        if (file.delete()) {
+            System.out.println("Deleted the file: " + file.getName());
+        } else {
+            System.out.println("Failed to delete the file.");
+        }
+    }
+
+    public static void menuOpciones() {
+        System.out.println("1. Crear archivo de texto");
+        System.out.println("2. Escribir en archivo de texto");
+        System.out.println("3. Leer archivo de texto");
+        System.out.println("4. Borrar archivo de texto");
+        System.out.println("5. Salir");
+    }
+}
